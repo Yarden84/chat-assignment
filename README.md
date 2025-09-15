@@ -1,19 +1,7 @@
 # Klaay Chat Application
 
-A modern, real-time chat application built with Vue.js 3 and WebSocket technology. Klaay provides an intuitive WhatsApp-like interface for seamless conversations with AI assistance.
+A modern, real-time chat application built with Vue.js 3 and WebSocket technology.
 
-## 🌟 Features
-
-- **Real-time Messaging**: Instant message delivery using WebSockets
-- **AI Assistant Integration**: Built-in AI chatbot for interactive conversations
-- **Multiple Conversations**: Create and manage multiple chat conversations
-- **Dark/Light Theme**: Toggle between themes with persistent preference
-- **Mobile Responsive**: Optimized for both desktop and mobile devices
-- **Message Timestamps**: WhatsApp-style time and date formatting
-- **Conversation Management**: Rename conversations with inline editing
-- **Auto-scrolling**: Automatic scroll to latest messages
-- **Typing Indicators**: Visual feedback when AI is responding
-- **User Authentication**: Secure login system with demo accounts
 
 ## 🚀 Tech Stack
 
@@ -47,29 +35,20 @@ A modern, real-time chat application built with Vue.js 3 and WebSocket technolog
 
 ## 🛠️ Installation & Setup
 
-### 1. Clone the Repository
-```bash
-git clone <repository-url>
-cd chat-app
-```
-
-### 2. Install Dependencies
-```bash
-npm install
-```
-
-### 3. Start the Backend Server
+### 1. Start the Backend Server
 ```bash
 # Navigate to API directory
 cd ../API
+npm install
 npm run server
 ```
 The backend server will run on `http://localhost:9293`
 
-### 4. Start the Frontend Development Server
+### 2. Start the Frontend Development Server
 ```bash
 # In a new terminal, go back to chat-app directory
 cd chat-app
+npm install
 npm run dev
 ```
 The frontend will run on `http://localhost:5173`
@@ -190,39 +169,5 @@ The backend provides the following endpoints:
 
 The application uses a simple token-based authentication system with demo accounts. In a production environment, this would be replaced with a proper authentication service.
 
-## 🚀 Deployment
 
-### Production Build
-```bash
-npm run build
-```
 
-### Preview Production Build
-```bash
-npm run preview
-```
-
-The built application will be in the `dist/` directory, ready for deployment to any static hosting service.
-
-## 📱 Browser Support
-
-- **Modern Browsers**: Chrome, Firefox, Safari, Edge (latest versions)
-- **Mobile**: iOS Safari, Android Chrome
-- **Features**: WebSocket support required for real-time messaging
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests for new features
-5. Run the test suite
-6. Submit a pull request
-
-## 📄 License
-
-This project is licensed under the MIT License.
-
----
-
-**Enjoy chatting with Klaay! 🎉**
