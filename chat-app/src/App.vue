@@ -2,7 +2,7 @@
 import { RouterView } from 'vue-router'
 import { onMounted } from 'vue'
 import { useTheme } from './composables/useTheme'
-import ThemeToggle from './components/ThemeToggle.vue'
+import MainControllers from './components/MainControllers.vue'
 
 const { initializeTheme } = useTheme()
 
@@ -14,7 +14,7 @@ onMounted(() => {
 <template>
   <div class="relative">
     <RouterView />
-    <ThemeToggle />
+    <MainControllers />
   </div>
 </template>
 

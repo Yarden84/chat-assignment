@@ -30,7 +30,7 @@ describe('Authentication Flow', () => {
     cy.get('input[type="password"]').type('wrongpass')
     cy.get('button[type="submit"]').click()
     
-    cy.contains('*Invalid credentials').should('be.visible')
+    cy.contains('*Invalid username or password').should('be.visible')
   })
 
   it('should successfully login with valid credentials', () => {
@@ -43,6 +43,15 @@ describe('Authentication Flow', () => {
   })
 
   it('should show loading state during login', () => {
+    cy.intercept('POST', '**/authenticate', (req) => {
+      req.reply((res) => {
+        // Add 500ms delay
+        return new Promise(resolve => {
+          setTimeout(() => resolve(res), 500)
+        })
+      })
+    }).as('loginRequest')
+
     cy.get('input[type="text"]').type('user1')
     cy.get('input[type="password"]').type('password1')
     cy.get('button[type="submit"]').click()
@@ -50,6 +59,9 @@ describe('Authentication Flow', () => {
     cy.get('button[type="submit"]').should('be.disabled')
     cy.get('input[type="text"]').should('be.disabled')
     cy.get('input[type="password"]').should('be.disabled')
+
+    // Wait for the request to complete
+    cy.wait('@loginRequest')
   })
 
   it('should maintain authentication across page refreshes', () => {
@@ -69,7 +81,8 @@ describe('Authentication Flow', () => {
     cy.get('button[type="submit"]').click()
     
     cy.url().should('include', '/chat')
-    cy.contains('Logout').click()
+    // Click the logout button (now in the top-right corner)
+    cy.get('button[title="Logout"]').click()
     
     cy.url().should('include', '/login')
     cy.contains('Welcome to Klaay').should('be.visible')

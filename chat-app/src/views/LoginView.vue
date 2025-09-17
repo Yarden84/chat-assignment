@@ -94,13 +94,13 @@ const loading = ref(false)
 const error = ref('')
 
 const handleLogin = async () => {
+  loading.value = true
+  error.value = ''
   if (!form.value.username || !form.value.password) {
     error.value = '*Please fill in all fields'
     return
   }
 
-  loading.value = true
-  error.value = ''
 
   try {
     await authStore.login(form.value.username, form.value.password)
