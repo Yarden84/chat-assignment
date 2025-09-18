@@ -99,7 +99,7 @@ describe('Complete User Workflows', () => {
 
     it('should handle logout and re-login', () => {
       cy.login()
-      cy.contains('Logout').click()
+      cy.get('button[title="Logout"]').click()
       cy.url().should('include', '/login')
       
       cy.login('user2', 'password2')

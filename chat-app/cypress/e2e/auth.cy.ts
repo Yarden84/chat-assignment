@@ -44,11 +44,10 @@ describe('Authentication Flow', () => {
 
   it('should show loading state during login', () => {
     cy.intercept('POST', '**/authenticate', (req) => {
-      req.reply((res) => {
-        // Add 500ms delay
-        return new Promise(resolve => {
-          setTimeout(() => resolve(res), 500)
-        })
+      req.reply({
+        statusCode: 200,
+        body: { token: 'mock-token' },
+        delay: 500
       })
     }).as('loginRequest')
 
@@ -60,7 +59,6 @@ describe('Authentication Flow', () => {
     cy.get('input[type="text"]').should('be.disabled')
     cy.get('input[type="password"]').should('be.disabled')
 
-    // Wait for the request to complete
     cy.wait('@loginRequest')
   })
 

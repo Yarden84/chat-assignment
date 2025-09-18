@@ -11,7 +11,7 @@ describe('Chat Interface', () => {
     it('should display chat interface elements', () => {
       cy.contains('Chats').should('be.visible')
       cy.contains('Welcome, user1').should('be.visible')
-      cy.get('button').contains('Logout').should('be.visible')
+      cy.get('button[title="Logout"]').should('be.visible')
       cy.get('button[title]').should('be.visible') // New chat button
     })
 

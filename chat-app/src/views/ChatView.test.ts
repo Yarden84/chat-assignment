@@ -130,7 +130,6 @@ describe('ChatView', () => {
       const wrapper = createWrapper()
 
       expect(wrapper.text()).toContain('Welcome, testuser')
-      expect(wrapper.text()).toContain('Logout')
     })
   })
 
@@ -267,8 +266,10 @@ describe('ChatView', () => {
       const conversationItem = wrapper.find('.group')
       expect(conversationItem.exists()).toBe(true)
       
-      const editButton = conversationItem.find('.opacity-0')
+      // Look for the edit button with the correct responsive class
+      const editButton = conversationItem.find('button[data-cy="edit-conversation"]')
       expect(editButton.exists()).toBe(true)
+      expect(editButton.classes()).toContain('lg:opacity-0')
     })
 
     it('should enter edit mode when edit button clicked', async () => {
@@ -341,20 +342,6 @@ describe('ChatView', () => {
       expect(wrapper.vm.formatConversationTime('invalid')).toBe('')
       expect(wrapper.vm.formatConversationDate('')).toBe('')
       expect(wrapper.vm.formatConversationDate('invalid')).toBe('')
-    })
-  })
-
-  describe('User Actions', () => {
-    it('should logout when logout button clicked', async () => {
-      const pushSpy = vi.spyOn(mockRouter, 'push')
-      const wrapper = createWrapper()
-      
-      const buttons = wrapper.findAll('button')
-      const logoutButton = buttons.find((btn: any) => btn.text().includes('Logout'))
-      await logoutButton.trigger('click')
-      
-      expect(mockAuthStore.logout).toHaveBeenCalled()
-      expect(pushSpy).toHaveBeenCalledWith('/login')
     })
   })
 
