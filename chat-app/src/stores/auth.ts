@@ -30,6 +30,7 @@ export const useAuthStore = defineStore('auth', () => {
       token.value = null
       user.value = null
       apiClient.setToken(null)
+      localStorage.removeItem('auth_token')
       localStorage.removeItem('user_info')
       throw error
     } finally {
@@ -41,6 +42,7 @@ export const useAuthStore = defineStore('auth', () => {
     token.value = null
     user.value = null
     apiClient.setToken(null)
+    localStorage.removeItem('auth_token')
     localStorage.removeItem('user_info')
   }
 

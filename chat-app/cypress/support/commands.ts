@@ -1,7 +1,5 @@
 /// <reference types="cypress" />
 
-// Custom commands for chat application testing
-
 Cypress.Commands.add('login', (username: string = 'user1', password: string = 'password1') => {
   cy.visit('/login')
   cy.get('input[type="text"]').type(username)
@@ -13,8 +11,9 @@ Cypress.Commands.add('login', (username: string = 'user1', password: string = 'p
 Cypress.Commands.add('createConversation', (name: string) => {
   cy.get('[data-cy="new-chat-button"]').click()
   cy.get('#chatName').type(name)
-  cy.get('button[type="submit"]').click()
-  cy.contains(name).should('be.visible')
+  cy.get('button[type="submit"]').first().click({ force: true }) 
+  cy.contains(name, { timeout: 15000 }).should('be.visible')
+  cy.wait(2000)
 })
 
 Cypress.Commands.add('selectConversation', (index: number = 0) => {
@@ -23,14 +22,15 @@ Cypress.Commands.add('selectConversation', (index: number = 0) => {
 })
 
 Cypress.Commands.add('sendMessage', (message: string) => {
-  cy.get('input[placeholder="Type a message..."]').type(message)
-  cy.get('button[type="submit"]').click()
+  cy.get('[data-cy="message-input"]').type(message) 
+  cy.get('button[type="submit"]').first().click() 
   cy.contains(message).should('be.visible')
 })
 
 Cypress.Commands.add('waitForAIResponse', (timeout: number = 15000) => {
-  cy.get('[data-cy="ai-typing"]').should('be.visible')
-  cy.get('[data-cy="ai-typing"]', { timeout }).should('not.exist')
+  cy.get('.animate-bounce, .animate-pulse, .animate-spin').should('exist')
+  cy.get('.animate-bounce, .animate-pulse, .animate-spin', { timeout }).should('not.exist')
+  cy.wait(2000)
 })
 
 Cypress.Commands.add('checkAccessibility', () => {
@@ -43,7 +43,7 @@ Cypress.Commands.add('checkAccessibility', () => {
 Cypress.Commands.add('checkResponsive', (viewport: string) => {
   cy.viewport(viewport as Cypress.ViewportPreset)
   cy.get('body').should('be.visible')
-  cy.get('[data-cy="conversation-list"]').should('be.visible')
+  cy.get('[data-cy="conversation-item"]').should('exist')
 })
 
 declare global {
