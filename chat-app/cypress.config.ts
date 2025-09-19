@@ -6,7 +6,6 @@ export default defineConfig({
     baseUrl: 'http://localhost:5173',
     supportFile: 'cypress/support/e2e.ts',
     video: false,
-    screenshot: true,
     screenshotOnRunFailure: true,
     viewportWidth: 1280,
     viewportHeight: 720,

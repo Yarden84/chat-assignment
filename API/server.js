@@ -35,14 +35,14 @@ function buildApp() {
         id: "d259d0be-a4cd-41f8-a19b-e333eab1fe21",
         name: "Conversation #1",
         author: "c89ee220-37fc-4781-ae07-24fcaf91281a",
-        createdAt: new Date(Date.now() - 86400000).toISOString(), // 1 day ago
-        updatedAt: new Date(Date.now() - 3600000).toISOString(), // 1 hour ago
+        createdAt: new Date(Date.now() - 86400000).toISOString(),
+        updatedAt: new Date(Date.now() - 3600000).toISOString(), 
         messages: [
           {
             id: "12f22418-4b56-44ad-9404-cf9231aad3d4",
             text: "How can I help you today?",
             author: "AI",
-            createdAt: new Date(Date.now() - 3600000).toISOString() // 1 hour ago
+            createdAt: new Date(Date.now() - 3600000).toISOString() 
           }
         ]
       },
@@ -50,14 +50,14 @@ function buildApp() {
         id: "c6b3b2c2-2f7f-4d3e-8b0e-1b5d0b7b3f8d",
         name: "Conversation #2",
         author: "f5a2d4e7-3b8f-4c7d-8e7e-3f1b4f7e8f7d",
-        createdAt: new Date(Date.now() - 172800000).toISOString(), // 2 days ago
-        updatedAt: new Date(Date.now() - 7200000).toISOString(), // 2 hours ago
+        createdAt: new Date(Date.now() - 172800000).toISOString(), 
+        updatedAt: new Date(Date.now() - 7200000).toISOString(), 
         messages: [
           {
             id: "d0d8f7e8-7b3f-4b0e-8d3e-2c2f7f6b3b2c",
             text: "Hi, there!",
             author: "AI",
-            createdAt: new Date(Date.now() - 7200000).toISOString() // 2 hours ago
+            createdAt: new Date(Date.now() - 7200000).toISOString() 
           }
         ]
       }
